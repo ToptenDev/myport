@@ -1,0 +1,27 @@
+{
+	"serverAddress": "https://192.168.4.196:3030/app//app/"
+}
+
+1. error
+https://www.google.com/search?q=ntcreatefile+status_object_name_not_found&rlz=1C1CHWL_enUS1038US1038&oq=ntcreatefile+status_object_name_not_found&aqs=chrome..69i57.9920j0j1&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:746c8fd3,vid:9FYREN6UPsM
+
+
+https://www.google.com/search?q=ntcreatefile+status_object_name_not_found&rlz=1C1CHWL_enUS1038US1038&oq=ntcreatefile+status_object_name_not_found&aqs=chrome..69i57.9920j0j1&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:746c8fd3,vid:9FYREN6UPsM
+
+
+2. attached png file
+
+If you have checked all the files in your repository using git ls-files and found that none of them exceed the 100 MB limit, it's possible that the error is caused by a commit that is being pushed and contains a large file.
+
+In this case, you can use the git rev-list command to list the commits in your local repository and their sizes. The git rev-list command shows the commit hash, the author, the date, and the commit message, as well as the size of the commit.
+
+To do this, run the following command:
+
+css
+Copy code
+git rev-list --objects --all | sort -k 2 > allfileshas.txt
+This will create a file called allfileshas.txt that lists all the objects in your repository along with their size. You can then review this file to identify any large commits that may be causing the issue.
+
+If you find a large commit, you can use the git filter-branch command to remove the large file from the commit history. You will need to force push your changes after running this command, so make sure to communicate this to any collaborators who may be working on the repository.
+
+Note that if you do remove a large file from your repository history, anyone who has already cloned the repository will need to re-clone it to get the updated history.
